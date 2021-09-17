@@ -4,4 +4,4 @@
 Publier sur [Rzine](http://rzine.fr/)
 
 
--> [Consulter](https://lecampiong.github.io/Rzine_correlation/index.html)
+-> [Consulter](https://lecampiong.github.io/Rzine_correlation/)
