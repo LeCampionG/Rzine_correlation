@@ -2,7 +2,7 @@
 ### Guide pratique avec R
 **Grégoire Le Campion (UMR 5319 passages)**
 <br/>  
-Pour consulter cette fiche Rzine vous pouvez cliquer [**ici**](https://lecampiong.github.io/Rzine_correlation/)
+Pour consulter cette fiche Rzine vous pouvez cliquer [**ici**](https://rzine-reviews.github.io/Rzine_correlation/)
 
 
 <br/>  
