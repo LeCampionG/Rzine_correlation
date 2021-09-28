@@ -25,22 +25,16 @@ licence: "by-sa"
 
 ```{r setup, include=FALSE}
 
-library(knitr)
-library(rzine)
-
 ## Global options
-options(max.print="75")
-opts_chunk$set(echo=TRUE,
-	             cache=FALSE,
-               prompt=FALSE,
-               tidy=FALSE,
-               comment=NA,
-               message=FALSE,
-               warning=FALSE,
-               class.source="bg-info",
-               class.output="bg-warning")
+knitr::opts_chunk$set(echo=TRUE,
+        	            cache=FALSE,
+                      prompt=FALSE,
+                      comment=NA,
+                      message=FALSE,
+                      warning=FALSE,
+                      class.source="bg-info",
+                      class.output="bg-warning")
 
-# opts_knit$set(width=75)
 ```
 
 
@@ -724,8 +718,8 @@ Vous pouvez par exemple utiliser <a href="https://analytics.huma-num.fr/Gregoire
 ## Infos session  {-}
 
 ```{r session_info, echo=FALSE}
-kableExtra::kable_styling(kable(sessionRzine()[[1]], row.names = F))
-kableExtra::kable_styling(kable(sessionRzine()[[2]], row.names = F))
+kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[1]], row.names = F))
+kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[2]], row.names = F))
 ```
 
 ## Citation {-}
@@ -736,7 +730,7 @@ rref <- bibentry(
    bibtype = "misc",
    title = "Analyse des corrélations avec easystats",
    author = person("Grégoire Le Campion"),
-   journal = "Rzine.fr",
+   journal = "Rzine",
    publisher = "FR CIST",
    year = 2021,
    url = "https://rzine.fr/docs/20200526_glecampion_initiation_aux_correlations/index.html")
