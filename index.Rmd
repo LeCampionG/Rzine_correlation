@@ -21,8 +21,6 @@ github: "rzine-reviews/Rzine_correlation"
 # doi: "10.5281/zenodo.4554776"
 licence: "by-sa"
 # 5 possible choices : "by-nd", "by", "by-nc-sa", "by-nc","by-sa"
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -733,18 +731,30 @@ kableExtra::kable_styling(kable(sessionRzine()[[2]], row.names = F))
 ## Citation {-}
 
 ```{r ReadCitation, echo=FALSE}
-citationRzine <- bibtex::read.bib("cite.bib")
+
+rref <- bibentry(
+   bibtype = "misc",
+   title = "Analyse des corrélations avec easystats",
+   author = person("Grégoire Le Campion"),
+   journal = "Rzine.fr",
+   publisher = "FR CIST",
+   year = 2021,
+   url = "https://rzine.fr/docs/20200526_glecampion_initiation_aux_correlations/index.html")
+
 ``` 
 
-`r capture.output(print(citationRzine[1]))`
+`r capture.output(print(rref))`
 
-### Format BibTex : {-}
+### BibTex : {-}
 
 ```{r generateBibTex, echo=FALSE}
-cat(readLines('cite.bib'), sep = '\n')
+
+print(rref, style = "Bibtex")
+
 ``` 
 
 <br/>
+
 
 
 ## Glossaire {- #endnotes}
