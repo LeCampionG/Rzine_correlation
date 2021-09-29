@@ -289,7 +289,7 @@ Pour pallier ce problème, il est possible de :
 La fonction `cor.test()` qui permet de corréler des variables deux à deux renvoie un ensemble d'information : la $p-value$, le degré de liberté^[__Le dégré de liberté__ est un paramètre important qui intervient dans la réalisation des tests statistiques. Il dépend à la fois du nombre d'observation de votre échantillon (le nombre d'individus statistiques) et du nombre de paramères (de variables) de votre modèle. Le degré de liberté représente la quantité d'information fournies par vos données que le modèle statistique peut "utiliser" pour estimer les valeurs des paramètres d'une population qui serait inconnu et calculer la variabilités de ces estimations.], un intervalle de confiance et bien sûr le coefficient de corrélation (ici Pearson).
 
 ```{r, echo=TRUE, eval=TRUE}
-cor.test(woman_speak$women_expression_rate, woman_speak$speech_rate, method="pearson")
+cor.test(woman_speak$women_expression_rate, woman_speak$speech_rate, method = "pearson")
 
 ```
 
@@ -332,6 +332,7 @@ Le package `correlation` propose des solutions alternatives efficaces pour réal
 Commencez par charger la librairie.
 
 ```{r, echo=TRUE, eval=TRUE}
+
 library(correlation)
 
 ```
@@ -454,7 +455,7 @@ Utiliser les arguments `include_factor= TRUE` et `method = "auto"` si vous souha
 
 ws_cortvradio <- woman_speak %>% 
                  group_by(media_type) %>% 
-                 correlation(include_factor= TRUE, method = "auto")
+                 correlation(include_factor = TRUE, method = "auto")
 ```
 
 
@@ -497,7 +498,7 @@ library(ggplot2)
 
 ggplot(woman_speak, aes(x = speech_rate, y = women_expression_rate)) +
   geom_point() + 
-  geom_smooth(method="lm")
+  geom_smooth(method = "lm")
 
 ```
 
@@ -580,7 +581,7 @@ mat_cor_comp <- summary(ws_cor, redundant = TRUE)
 rownames(mat_cor_comp ) <- mat_cor_comp[,1]
 
 # Transformation du data.frame en objet matrice (+ suppression première colonne)
-mat_cor<- as.matrix(mat_cor_comp[, -1])
+mat_cor<- as.matrix(mat_cor_comp[,-1])
 
 ```
 
@@ -596,7 +597,7 @@ Pour cela, on utilisera la fonction `cor_to_p()` du package `correlation`, qui r
 nb <- nrow(woman_speak)
 
 # Calcul des matrice de p-values et des intervalles de confiance
-p.value <- cor_to_p(mat_cor, n=nb, method = "auto")
+p.value <- cor_to_p(mat_cor, n = nb, method = "auto")
 
 # Extraction de la matrice des p-value uniquement
 p_mat <- p.value$p
@@ -624,12 +625,12 @@ library(RColorBrewer)
 
 corrplot(mat_cor, 
          p.mat = p_mat, 
-         type="upper", 
-         order="hclust", 
+         type = "upper", 
+         order = "hclust", 
          addCoef.col = "white", 
-         tl.col="gray", 
-         tl.srt=45, 
-         col=brewer.pal(n=8, name="PRGn"), 
+         tl.col = "gray", 
+         tl.srt = 45, 
+         col=brewer.pal(n = 8, name = "PRGn"), 
          sig.level = 0.000001, 
          insig = "blank", 
          diag=FALSE, )
@@ -690,11 +691,11 @@ Construction de l'histogramme avec le package `ggplot2`.
 
 ```{r, echo=TRUE, eval=TRUE}
 
-ggplot(hist_cor, aes(x =reorder(rowname, year), y = year, fill=correlation)) +
-      geom_bar(stat = "identity", colour="black") +
+ggplot(hist_cor, aes(x = reorder(rowname, year), y = year, fill = correlation)) +
+      geom_bar(stat = "identity", colour = "black") +
       ylab("corrélation") +
       xlab("Variables") +
-      scale_fill_discrete(labels = c("Négative", "Postive"))
+      scale_fill_discrete(labels = c("Négative", "Positive"))
   
 ```
 
@@ -731,7 +732,7 @@ rref <- bibentry(
    title = "Analyse des corrélations avec easystats",
    author = person("Grégoire Le Campion"),
    journal = "Rzine",
-   publisher = "FR CIST",
+   publisher = "FR 2007 CIST",
    year = 2021,
    url = "https://rzine.fr/docs/20200526_glecampion_initiation_aux_correlations/index.html")
 
