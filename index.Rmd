@@ -198,7 +198,7 @@ Nous utiliserons le fichier de données relatif au temps de parole des femmes à
 
 <br>
 
-<p class="center"> [<img src="figures/zip.png" width="50"/> **Télécharger les données**](https://github.com/rzine-reviews/Rzine_correlation/raw/master/woman_speak.zip) </p>
+<p class="center"> [<img src="figures/zip.png" width="50"/> **Télécharger les données**](https://github.com/rzine-reviews/Rzine_correlation/raw/master/data.zip) </p>
 
 <br>
 
@@ -215,7 +215,7 @@ Ce tableau de données comporte 7 variables:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
-woman_speak <- read.csv("woman_speak.csv")
+woman_speak <- read.csv("data/woman_speak.csv")
 library(DT)
 datatable(woman_speak)
 
@@ -267,7 +267,7 @@ La suite `easystats` (@easystats) est un eco-système qui propose un ensemble de
 Commençons par charger le jeu de donnée téléchargé.
 
 ```{r, echo=TRUE, eval=TRUE}
-woman_speak <- read.csv("woman_speak.csv", stringsAsFactors = TRUE)
+woman_speak <- read.csv("data/woman_speak.csv", stringsAsFactors = TRUE)
 ```
 
 En utilisant la fonction `str()`, on obtient un rapide panorama des différentes variables.
@@ -447,9 +447,8 @@ ws_cortvradio <- woman_speak %>%
 ```
 
 
-<div class="alert alert-info" role="alert">
-Utiliser les arguments `include_factor= TRUE` et `method = "auto"` si vous souhaitez prendre en compte les variables qualitatives du jeu de données.
-</div>
+Vous pouvez utiliser les arguments `include_factor= TRUE` et `method = "auto"` pour **prendre en compte les variables qualitatives** du jeu de données.
+
 
 ```{r, echo=TRUE, eval=FALSE}
 
@@ -509,7 +508,7 @@ library(ggplot2)
 
 ggplot(woman_speak, aes(x = speech_rate, y = women_expression_rate, color = media_type)) +
   geom_point() + 
-  geom_smooth(method="lm")
+  geom_smooth(method = "lm")
 
 ```
 
