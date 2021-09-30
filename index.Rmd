@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 # Préambule {-}
 
-Cette fiche ne constitue pas un cours sur les coefficients de corrélation, si un rappel théorique est réalisé, il reste superficiel.  Néanmoins, certains concepts statistiques sont nécessaires pour aborder le sujet. Ces concepts feront l'objet d'un glossaire en fin de fiche et seront identifiés par un numéro en indice.
+Cette fiche ne constitue pas un cours sur les coefficients de corrélation. Si un rappel théorique est réalisé, il reste superficiel.  Néanmoins, certains concepts statistiques sont nécessaires pour aborder le sujet. Ces concepts feront l'objet d'un glossaire en fin de fiche et seront identifiés par un numéro en indice.
 <br>
 Par ailleurs, il ne s'agit pas non plus de présenter une méthode qui serait __LA__ méthode pour réaliser des analyses de corrélation avec R.
 </br>
@@ -53,7 +53,7 @@ L'objectif de cette fiche est de présenter étape par étape une méthodologie 
 
 ## Ce n'est pas une régression !
 
-**La corrélation, contrairement à la régression^[__Une régression__ renvoie à un ensemble de tests statistiques dont l'objectif est de prèdire les valeurs prisent par une variable en fonction d'une ou plusieurs autres variables] étudie un lien et non une causalité. La corrélation nous permet de déterminer l'absence ou la présence d'une relation, d'un lien significatif entre 2 variables**.
+**La corrélation, contrairement à la régression^[__Une régression__ renvoie à un ensemble de tests statistiques dont l'objectif est de prèdire les valeurs prisent par une variable en fonction d'une ou plusieurs autres variables], étudie un lien et non une causalité. La corrélation nous permet de déterminer l'absence ou la présence d'une relation, d'un lien significatif entre 2 variables**.
 
 
 <div class="alert alert-danger" role="alert">
@@ -62,7 +62,7 @@ La corrélation est une quantification de la relation entre des variables. Le ca
 
 
 Cette notion de covariance est importante, elle est au cœur du concept de corrélation. Lorsque l'on mesure une corrélation on étudie la variation commune des variables.
-On peut théoriquement mesurer une corrélation entre n'importe quelle variable. Il est possible de s'amuser à calculer la corrélation entre le nombre de suicides par strangulation aux États-Unis et le niveau d’investissement du gouvernement américain dans la recherche :
+On peut théoriquement mesurer une corrélation entre n'importe quelle variable. Il est possible de s'amuser à calculer la corrélation entre le nombre de suicides par strangulation aux Etats-Unis et le niveau d’investissement du gouvernement américain dans la recherche :
 
 <br>
 
@@ -76,7 +76,7 @@ Pour comprendre plus aisément cette différence entre lien et cause, je vous co
 
 <br>
 
-## Quels types de corrélations?
+## Quels types de corrélations ?
 
 Il existe plusieurs méthodes de calcul pour analyser des corrélations. Le choix d'un coefficient est determiné par les spécificités des variables étudiées.
 __Un mauvais choix risque de fausser vos résultats et vos interprétations.__
@@ -84,14 +84,14 @@ __Un mauvais choix risque de fausser vos résultats et vos interprétations.__
 Pour faire le bon choix, vous devez prendre en compte : 
 
 * Les **types de variables** (quantitative, qualitative)
-* Les formats de stockage (numérique, chaîne de caractère et facteur)
+* Les **types de données** (numérique, chaîne de caractère et facteur)
 * La **forme des distributions** des séries statistiques analysées
 
-Voci un tableau recensant différents types de coefficients de corrélation parmi les plus courants.
+Voici un tableau recensant différents types de coefficients de corrélation parmi les plus courants.
 
 <p class="center"><img src="figures/types_of_correlations.jpg" width="650"/> </p>
 
-Nous ne ferons pas ici un point statistique sur chacun de ces coefficients et n'aborderons pas les soubassements algébriques de ces tests. Toutefois, il est bon de savoir et de se rappeller qu'il exite différents types de coefficients de correlation et qu'il faudra choisir celui à utiliser en fonction des variables à analyser.
+Nous ne ferons pas ici un point statistique sur chacun de ces coefficients et n'aborderons pas les soubassements algébriques de ces tests. Toutefois, il est bon de savoir et de se rappeller qu'il existe différents types de coefficients de corrélation et qu'il faudra choisir celui à utiliser en fonction des variables à analyser.
 
 Les coefficients de corrélation les plus connus et utilisés en SHS sont :
 
@@ -103,11 +103,11 @@ Ainsi, si vous cherchez à étudier une relation linéaire entre **deux variable
 
 En revanche, si :
 
-* **Vos données ne suivent pas une loi normale**,
-* Et qu'**elles sont qualitatives**.
+* **Vos données ne suivent pas une loi normale**
+* Et **vos données sont qualitatives**
 
 Adieu Pearson et bonjour Spearman ou Kendall (entre autres).
-Rassurez vous, ces tests fonctionnent très bien ! En revanche, on ne sera pas sur l’étude d’une relation linéaire comme dans le cas de Pearson, mais sur une comparaison des rangs ^[__Un rang__ est ici un nombre consécutif affecté à une observation spécifique dans notre échantillon d'observations triées selon leurs valeurs].
+Rassurez vous, ces tests fonctionnent très bien ! En revanche, on ne sera pas sur l’étude d’une relation linéaire comme dans le cas de Pearson, mais sur une comparaison des rangs^[__Un rang__ est ici un nombre consécutif affecté à une observation spécifique dans notre échantillon d'observations triées selon leurs valeurs].
 
 À dire vrai, d’un point de vue statistique, elles sont même considérées comme des méthodes plus robustes car ne dépendant pas de la distribution des données.
 Ces coefficients vous seront donc très utiles dans le cas où l'analyse du nuage de points révèle une forme curviligne dans une relation qui semble mal s'ajuster à la fameuse droite de régression^[__La droite de régression__ est un graphique linéaire représentant la corrélation théorique entre deux variables].
@@ -115,18 +115,18 @@ Ces coefficients vous seront donc très utiles dans le cas où l'analyse du nuag
 
 On peut signaler que :
 
-* Le coefficient de Spearman se lit comme le coefficient de Pearson, en simplifiant largement on peut considérer qu'il s'agit de son adaptation pour les tests non-paramétriques.
-* Alors que le coefficient de Kendall se lit comme une probabilité. Précisément, c'est la différence entre la probabilité que les données observées soient dans le même ordre pour les deux variables versus la probabilité que les données observées soient dans des ordres différents pour les deux variables.
+* Le coefficient de Spearman se lit comme le coefficient de Pearson, en simplifiant largement on peut considérer qu'il s'agit de son adaptation pour les tests non-paramétriques
+* Au contraire, le coefficient de Kendall se lit comme une probabilité. Précisément, c'est la différence entre la probabilité que les données observées soient dans le même ordre pour les deux variables versus la probabilité que les données observées soient dans des ordres différents pour les deux variables
 
-Par ailleurs, dans certaines disciplines (comme par exemple en psychologie) on considère que Spearman s'utilise dans le cas de variables ordinales où la distance "ressentie" entre les classes de nos données qualitative est la même entre tous les intervalles (par exemple les réponses aux échelles de Likert^[__Une échelle de Likert__ est un outil psychométrique permettant de mesurer une attitude chez des individus. Elle tire son nom du psychologue américain Rensis Likert qui l'a développée. Elle consiste en une ou plusieurs affirmations pour lesquelles la personne interrogée exprime son degré d'accord ou de désaccord.])
+Par ailleurs, dans certaines disciplines (comme par exemple en psychologie) on considère que Spearman s'utilise dans le cas de variables ordinales où la distance "ressentie" entre les classes de nos données qualitatives est la même entre tous les intervalles (par exemple les réponses aux échelles de Likert^[__Une échelle de Likert__ est un outil psychométrique permettant de mesurer une attitude chez des individus. Elle tire son nom du psychologue américain Rensis Likert qui l'a développée. Elle consiste en une ou plusieurs affirmations pour lesquelles la personne interrogée exprime son degré d'accord ou de désaccord.]).
 
 En plus de Pearson, Spearman et Kendall que nous retrouverons 8 fois sur 10, il existe d'autres tests de corrélation peu connus en SHS mais qui peuvent s'avérer très utiles, notamment dans le cas où vous voudriez étudier __le lien entre des variables quantitatives et qualitatives__.
-A savoir les coefficients de corrélation : Bisériel de point et Bisériel (Point-Biserial et Biserial en anglais) 
+A savoir les coefficients de corrélation : Bisériel de point et Bisériel (Point-Biserial et Biserial en anglais). 
 
 <div class="alert alert-info" role="alert">
 Bisériel de point : coefficient permettant d'étudier le lien entre une variable qualitative dichotomique et une variable quantitative continue. Coefficient qui est mathématiquement équivalent à Pearson.
 <hr>
-Bisériel : utilisé également pour étudier un lien entre une variable quantitative et une variable dichotomique. Ce test s'emploi à la place du Bisériel de point lorsque l'on considére que la variable dichotomique possède une continuité sous-jacente. Souvent le cas pour une variable qui peut être mésurée de manière continue ou ordinale mais artifiecellement dichotomisé, par exemple: un niveau de stress mesurée de manière dichotomique (niveau bas VS niveau haut) mais qui aurait pu être mésuré à l'aide d'un score ou de catégories.
+Bisériel : utilisé également pour étudier un lien entre une variable quantitative et une variable dichotomique. Ce test s'emploie à la place du Bisériel de point lorsque l'on considère que la variable dichotomique possède une continuité sous-jacente. Souvent le cas pour une variable qui peut être mesurée de manière continue ou ordinale mais artificiellement dichotomisée, par exemple : un niveau de stress mesuré de manière dichotomique (niveau bas versus niveau haut) mais qui aurait pu être mesuré à l'aide d'un score ou de catégories.
 </div>
 
 
@@ -136,18 +136,18 @@ Bisériel : utilisé également pour étudier un lien entre une variable quantit
 
 ### Le coefficient de corrélation
 
-Si nous reprenons l'exemple cité précédemment en partie 1.1 sur le lien entre le nombre de suicides par strangulation aux États-Unis et le niveau d'investissement du gouvernement américain dans la recherche, ce coefficient de corrélation peut :
+Si nous reprenons l'exemple cité précédemment en partie 1.1 sur le lien entre le nombre de suicides par strangulation aux Etats-Unis et le niveau d'investissement du gouvernement américain dans la recherche, ce coefficient de corrélation peut :
 
 
-1. **être supérieur à 0** : les variables sont associées positivement, plus les investissements dans la recherche augmentent, plus le nombre de suicides par strangulation augmente et inversement ;
-1. **être inférieur à 0** : les variables sont associées négativement, plus les investissements dans la recherche augmentent, plus le nombre de suicides par strangulation diminue, et inversement;
-1. **être égale à 0** : il n'y a absolument aucun lien entre les variables, le niveau d'investissement dans la recherche n'a strictement aucune influence sur le nombre de suicides par strangulation, et inversement.
+1. **Etre supérieur à 0** : les variables sont associées positivement, plus les investissements dans la recherche augmentent, plus le nombre de suicides par strangulation augmente et inversement
+1. **Etre inférieur à 0** : les variables sont associées négativement, plus les investissements dans la recherche augmentent, plus le nombre de suicides par strangulation diminue, et inversement
+1. **Etre égale à 0** : il n'y a absolument aucun lien entre les variables, le niveau d'investissement dans la recherche n'a strictement aucune influence sur le nombre de suicides par strangulation, et inversement
 
 
 **Deux informations importantes sont donc à analyser** :
 
-* __Le sens de la relation__ : La corrélation est-elle positive ou négative (coefficient supérieur ou inférieur à 0) ?
-* __La force de la relation__ : Plus la valeur du coefficient est proche de + 1 ou de - 1, plus les deux variables sont associées fortement. Au contraire, plus le coefficient est près de 0, moins les variables partagent de covariance et donc, moins l'association est forte.
+* __Le sens de la relation__ : la corrélation est-elle positive ou négative (coefficient supérieur ou inférieur à 0) ?
+* __La force de la relation__ : plus la valeur du coefficient est proche de + 1 ou de - 1, plus les deux variables sont associées fortement. Au contraire, plus le coefficient est près de 0, moins les variables partagent de covariance et, donc, moins l'association est forte.
 
 Voici une figure récapitulative : 
 
@@ -155,27 +155,27 @@ Voici une figure récapitulative :
 
 Dans certaines disciplines des SHS on utilise les bornes de Cohen pour juger de la force d'une corrélation (Cohen, 1988) :
 
-    + Autour de 0.10 : effet de petite taille (corrélation faible)     
-    + Autour de 0.30 : effet de taille moyenne (corrélation moyenne)    
-    + Plus de 0.50 : effet de grande taille (corrélation forte)    
+    + Autour de 0,10 : effet de petite taille (corrélation faible)     
+    + Autour de 0,30 : effet de taille moyenne (corrélation moyenne)    
+    + Plus de 0,50 : effet de grande taille (corrélation forte)    
 
 
 <br>
 
-### p-value et Hypothèse nulle
+### p-value et hypothèse nulle
 
 Le $p$ (ou encore $p-value$ ) correspond à la notion de risque d'erreur.
 
 Le $p$ représente la probabilité du risque d'erreur associé à notre test statistique. C'est en fait la probabilité que le résultat de notre test soit dû au hasard.
 Le $p$ est important car c'est en fonction de sa valeur que nous pourrons dire si le résultat de notre test statistique peut être considéré comme fiable ou en réalité dû au hasard.
 <br>
-Pour être interprété, le coefficient de corrélation doit être significatif (la valeur de $p$ doit être a minima plus petite que 0,05, ce qui représente un risque de 5% de se tromper). Si le coefficient est non significatif, on considère alors qu'il est semblable à un coefficient = 0, c'est-à-dire qu'on ne peut pas considérer l'existence d'un lien.
+Pour être interprété, le coefficient de corrélation doit être significatif (la valeur de $p$ doit être a minima plus petite que 0.05, ce qui représente un risque de 5 % de se tromper). Si le coefficient est non significatif, on considère alors qu'il est semblable à un coefficient = 0, c'est-à-dire qu'on ne peut pas considérer l'existence d'un lien.
 
 
 <div class="alert alert-info" role="alert">
-Si votre $p$ est entre 0.05 et 0.1, vous pouvez éventuellement parler d’un effet tendanciel, bien que non significatif votre corrélation indique une tendance et il ne faut donc pas rejeter complètement cette corrélation. Là encore, il s'agit de pratiques qui diffèrent en fonction des disciplines.
+Si votre $p$ est entre 0.05 et 0.1, vous pouvez éventuellement parler d’un effet tendanciel, bien que non significative votre corrélation indique une tendance et il ne faut donc pas rejeter complètement cette corrélation. Là encore, il s'agit de pratiques qui diffèrent en fonction des disciplines.
 <hr>
-En SHS la limite à partir de laquelle nous considérons en général le test comme fiable est fixée à 5%. Comme expliqué il s'agit du seuil de significativité. Ce seuil est le risque d'erreur que nous considérons comme acceptable. Toutefois dans certaines disciplines, notamment en santé, ce seuil est abaissé à 1% voire 0.1%.
+En SHS la limite à partir de laquelle nous considérons en général le test comme fiable est fixée à 5 %. Comme expliqué il s'agit du seuil de significativité. Ce seuil est le risque d'erreur que nous considérons comme acceptable. Toutefois dans certaines disciplines, notamment en santé, ce seuil est abaissé à 1 % voire 0.1 %.
 </div>
 
 Le calcul d'une corrélation est un test d'hypothèse^[__Un test d’hypothèse__ (ou test statistique) est une démarche qui a pour but de fournir une règle de décision permettant, sur la base de résultats d’échantillon, de faire un choix entre deux hypothèses statistiques], il s'accompagne donc d'une hypothèse nulle^[__L'hypothèse nulle__ (aussi appellée H0) est la base des tests statistiques. Cette hypothèse postule l'égalité entre des paramètres statistiques, ce qui implique le plus souvent l'affirmation d'une absence d’effet de la ou des variables indépendantes faisant l’objet de la recherche]. Dans le cas du test de corrélation cette dernière peut être formulée de la sorte :
@@ -193,7 +193,7 @@ C'est à partir de la $p-value$ que nous accepterons ou rejetterons l'hypothèse
 ## Données
 
 Les données que nous utiliserons sont mises à disposition sur <a href="https://www.data.gouv.fr/fr/datasets/temps-de-parole-des-hommes-et-des-femmes-a-la-television-et-a-la-radio/" target="_blank">data.gouv.fr</a>.
-Ces données ont été produites par l'INA dans la cadre de d'une journée d'étude sur la parole en juin 2018. La compilation des temps de parole a été réalisé à l'aide du logiciel libre *inaSpeechSegmenter*, développé à l'INA. Ce logiciel est basé sur des algorithmes d'apprentissage automatique.
+Ces données ont été produites par l'INA dans le cadre d'une journée d'étude sur la parole en juin 2018. La compilation des temps de parole a été réalisée à l'aide du logiciel libre *inaSpeechSegmenter*, développé à l'institut national de l'audiovisuel (INA). Ce logiciel est basé sur des algorithmes d'apprentissage automatique.
 Nous utiliserons le fichier de données relatif au temps de parole des femmes à la télévision et à la radio. **Ces données présentent l'intérêt de se composer à la fois de variables qualitatives ordinales et dichotomiques ainsi que de variables quantitatives continues**.
 
 <br>
@@ -202,7 +202,7 @@ Nous utiliserons le fichier de données relatif au temps de parole des femmes à
 
 <br>
 
-Ce tableau de données comporte 7 variables:
+Ce tableau de données comporte 7 variables :
 
 * **media_type** : radio ou tv
 * **channel_name** : nom de la chaîne
@@ -210,7 +210,7 @@ Ce tableau de données comporte 7 variables:
 * **year** : année considérée
 * **women_expression_rate** : taux d’expression des femmes _(pourcentage de parole accordé aux femmes à l’antenne)_
 * **speech_rate** : taux de parole _(pourcentage de contenu assimilé à de la parole)_
-* **nb_hours_analyzed** : nombre d’heures analysées. _(Les entrées fondées sur l’analyse de moins de 500 heures ne sont pas dans la table)_.
+* **nb_hours_analyzed** : nombre d’heures analysées _(Les entrées fondées sur l’analyse de moins de 500 heures ne sont pas dans la table)_
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -690,7 +690,7 @@ Construction de l'histogramme avec le package `ggplot2`.
 
 ```{r, echo=TRUE, eval=TRUE}
 
-ggplot(hist_cor, aes(x = reorder(rowname, year), y = year, fill = correlation)) +
+ggplot(hist_cor, aes(x = reorder(term, year), y = year, fill = correlation)) +
       geom_bar(stat = "identity", colour = "black") +
       ylab("corrélation") +
       xlab("Variables") +
