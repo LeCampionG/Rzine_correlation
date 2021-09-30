@@ -724,7 +724,7 @@ kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[2]], row.names = F
 
 ## Citation {-}
 
-```{r ReadCitation, echo=FALSE}
+```{r Citation, echo=FALSE}
 
 rref <- bibentry(
    bibtype = "misc",
@@ -743,7 +743,8 @@ rref <- bibentry(
 
 ```{r generateBibTex, echo=FALSE}
 
-print(rref, style = "Bibtex")
+writeLines(toBibtex(rref), "cite.bib")
+toBibtex(rref)
 
 ``` 
 
