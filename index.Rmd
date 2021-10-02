@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 # Préambule {-}
 
-Cette fiche ne constitue pas un cours sur les coefficients de corrélation. Si un rappel théorique est réalisé, il reste superficiel.  Néanmoins, certains concepts statistiques sont nécessaires pour aborder le sujet. Ces concepts feront l'objet d'un glossaire en fin de fiche et seront identifiés par un numéro en indice.
+Cette fiche ne constitue pas un cours sur les coefficients de corrélation. Si un rappel théorique est réalisé, il reste superficiel.  Néanmoins, certains concepts statistiques sont nécessaires pour aborder le sujet. Ces concepts seront identifiés par un numéro en indice qui renverra à un glossaire en fin de fiche.
 <br>
 Par ailleurs, il ne s'agit pas non plus de présenter une méthode qui serait __LA__ méthode pour réaliser des analyses de corrélation avec R.
 </br>
@@ -53,12 +53,11 @@ L'objectif de cette fiche est de présenter étape par étape une méthodologie 
 
 ## Ce n'est pas une régression !
 
-**La corrélation, contrairement à la régression^[__Une régression__ renvoie à un ensemble de tests statistiques dont l'objectif est de prèdire les valeurs prisent par une variable en fonction d'une ou plusieurs autres variables], étudie un lien et non une causalité. La corrélation nous permet de déterminer l'absence ou la présence d'une relation, d'un lien significatif entre 2 variables**.
+**La corrélation, contrairement à la régression^[__Une régression__ renvoie à un ensemble de tests statistiques dont l'objectif est de prédire les valeurs prises par une variable en fonction d'une ou plusieurs autres variables.], étudie un lien et non une causalité. La corrélation nous permet de déterminer l'absence ou la présence d'une relation, d'un lien significatif entre 2 variables**.
 
 
 <div class="alert alert-danger" role="alert">
-La corrélation est une quantification de la relation entre des variables. Le calcul du coefficient de corrélation repose sur le calcul de la covariance ^[__La covariance__ en statistique est une valeur qui est une mesure de la variation simultanée de deux variables] entre les variables. Le coefficient de corrélation est en fait la standardisation ^[__La standardisation__ est une transformation de la donnée qui la rendra compatible avec une distribution moyenne de 0 et un écart type de 1. Pour ce faire on soustrait à chaque valeur une valeur de référence (très souvent la moyenne) et on divise par l'écart-type. Vous pourrez aussi trouver les termes de normalisation ou de Centrer-réduire] de la covariance. Cette standardisation permet d'obtenir une valeur qui variera toujours entre -1 et +1, peu importe l'échelle de mesure des variables mises en relation.
-</div>
+La corrélation est une quantification de la relation entre des variables. Le calcul du coefficient de corrélation repose sur le calcul de la covariance ^[__La covariance__ en statistique est une mesure de la variation simultanée de deux variables.] entre les variables. Le coefficient de corrélation est en fait la standardisation ^[__La standardisation__ est une transformation de la donnée qui la rendra compatible avec une distribution moyenne de 0 et un écart-type de 1. Pour ce faire on soustrait à chaque valeur une valeur de référence (très souvent la moyenne) et on divise par l'écart-type. Vous pourrez aussi trouver les termes de normalisation ou de centrer-réduire.] de la covariance. Cette standardisation permet d'obtenir une valeur qui variera toujours entre -1 et +1, peu importe l'échelle de mesure des variables mises en relation.</div>
 
 
 Cette notion de covariance est importante, elle est au cœur du concept de corrélation. Lorsque l'on mesure une corrélation on étudie la variation commune des variables.
@@ -70,15 +69,15 @@ On peut théoriquement mesurer une corrélation entre n'importe quelle variable.
 
 On remarque une trajectoire commune. **Il existe statistiquement une relation forte entre ces deux variables mais cela n'implique en aucun cas que l’une est la cause de l’autre**.
 
-<div class="alert alert-info" role="alert">
+
 Pour comprendre plus aisément cette différence entre lien et cause, je vous conseille de visiter le site <a href="http://tylervigen.com/spurious-correlations" target="_blank">__spurious-correlations__ </a> qui recense des corrélations très fortes entre des variables qui ont donc un lien statistique mais où il serait aberrant d'en déduire une relation de cause à effet.
-</div>
+
 
 <br>
 
 ## Quels types de corrélations ?
 
-Il existe plusieurs méthodes de calcul pour analyser des corrélations. Le choix d'un coefficient est determiné par les spécificités des variables étudiées.
+Il existe plusieurs méthodes de calcul pour analyser des corrélations. Le choix d'un coefficient est déterminé par les spécificités des variables étudiées.
 __Un mauvais choix risque de fausser vos résultats et vos interprétations.__
 
 Pour faire le bon choix, vous devez prendre en compte : 
@@ -99,7 +98,7 @@ Les coefficients de corrélation les plus connus et utilisés en SHS sont :
 * Le *Rho* de Spearman
 * Le *Tau* de Kendall
 
-Ainsi, si vous cherchez à étudier une relation linéaire entre **deux variables quantitatives et continues et qu'au moins l'une des deux suit une distribution normale ^[__Une distribution normale__ renvoie à une manière dont se distribuent vos données et qui rentrerait dans le cadre d'une loi normale. On parle également de loi de Gauss. En statistique, il s'agit d'une loi de probabilité. Elle est dite normale car elle permet de modéliser un grand nombre de distributions statistiques observées (taille, poids...). Les lois de probabilités sont utiles car permettent de modéliser les "phénomènes naturels" issus d'événements aléatoires.]**, vous aurez l’immense honneur de pouvoir réaliser un calcul du coefficient de corrélation de Pearson. Il s'agit du coefficient de référence lorsque l'on parle de corrélation.
+Ainsi, si vous cherchez à étudier une relation linéaire entre **deux variables quantitatives et continues et qu'au moins l'une des deux suit une distribution normale ^[__Une distribution normale__ renvoie à une manière dont se distribuent vos données et qui rentrerait dans le cadre d'une loi normale. On parle également de loi de Gauss. En statistique, il s'agit d'une loi de probabilité. Elle est dite normale car elle permet de modéliser un grand nombre de distributions statistiques observées (taille, poids...). Les lois de probabilités sont utiles car elles permettent de modéliser les "phénomènes naturels" issus d'événements aléatoires.]**, vous aurez l’immense honneur de pouvoir réaliser un calcul du coefficient de corrélation de Pearson. Il s'agit du coefficient de référence lorsque l'on parle de corrélation.
 
 En revanche, si :
 
@@ -107,10 +106,10 @@ En revanche, si :
 * Et **vos données sont qualitatives**
 
 Adieu Pearson et bonjour Spearman ou Kendall (entre autres).
-Rassurez vous, ces tests fonctionnent très bien ! En revanche, on ne sera pas sur l’étude d’une relation linéaire comme dans le cas de Pearson, mais sur une comparaison des rangs^[__Un rang__ est ici un nombre consécutif affecté à une observation spécifique dans notre échantillon d'observations triées selon leurs valeurs].
+Rassurez vous, ces tests fonctionnent très bien ! En revanche, on ne sera pas sur l’étude d’une relation linéaire comme dans le cas de Pearson, mais sur une comparaison des rangs^[__Un rang__ est ici un nombre consécutif affecté à une observation spécifique dans notre échantillon d'observations triées selon leurs valeurs.].
 
 À dire vrai, d’un point de vue statistique, elles sont même considérées comme des méthodes plus robustes car ne dépendant pas de la distribution des données.
-Ces coefficients vous seront donc très utiles dans le cas où l'analyse du nuage de points révèle une forme curviligne dans une relation qui semble mal s'ajuster à la fameuse droite de régression^[__La droite de régression__ est un graphique linéaire représentant la corrélation théorique entre deux variables].
+Ces coefficients vous seront donc très utiles dans le cas où l'analyse du nuage de points révèle une forme curviligne dans une relation qui semble mal s'ajuster à la fameuse droite de régression^[__La droite de régression__ est un graphique linéaire représentant la corrélation théorique entre deux variables.].
 
 
 On peut signaler que :
@@ -123,11 +122,10 @@ Par ailleurs, dans certaines disciplines (comme par exemple en psychologie) on c
 En plus de Pearson, Spearman et Kendall que nous retrouverons 8 fois sur 10, il existe d'autres tests de corrélation peu connus en SHS mais qui peuvent s'avérer très utiles, notamment dans le cas où vous voudriez étudier __le lien entre des variables quantitatives et qualitatives__.
 A savoir les coefficients de corrélation : Bisériel de point et Bisériel (Point-Biserial et Biserial en anglais). 
 
-<div class="alert alert-info" role="alert">
+<div class="alert alert-success" role="alert">
 Bisériel de point : coefficient permettant d'étudier le lien entre une variable qualitative dichotomique et une variable quantitative continue. Coefficient qui est mathématiquement équivalent à Pearson.
 <hr>
-Bisériel : utilisé également pour étudier un lien entre une variable quantitative et une variable dichotomique. Ce test s'emploie à la place du Bisériel de point lorsque l'on considère que la variable dichotomique possède une continuité sous-jacente. Souvent le cas pour une variable qui peut être mesurée de manière continue ou ordinale mais artificiellement dichotomisée, par exemple : un niveau de stress mesuré de manière dichotomique (niveau bas versus niveau haut) mais qui aurait pu être mesuré à l'aide d'un score ou de catégories.
-</div>
+Bisériel : utilisé également pour étudier un lien entre une variable quantitative et une variable dichotomique. Ce test s'emploie à la place du Bisériel de point lorsque l'on considère que la variable dichotomique possède une continuité sous-jacente. Souvent le cas pour une variable qui peut être mesurée de manière continue ou ordinale mais artificiellement dichotomisée, par exemple : un niveau de stress mesuré de manière dichotomique (niveau bas versus niveau haut) mais qui aurait pu être mesuré à l'aide d'un score ou de catégories.</div>
 
 
 <br>
@@ -162,7 +160,7 @@ Dans certaines disciplines des SHS on utilise les bornes de Cohen pour juger de 
 
 <br>
 
-### p-value et hypothèse nulle
+### *p-value* et hypothèse nulle
 
 Le $p$ (ou encore $p-value$ ) correspond à la notion de risque d'erreur.
 
@@ -172,13 +170,12 @@ Le $p$ est important car c'est en fonction de sa valeur que nous pourrons dire s
 Pour être interprété, le coefficient de corrélation doit être significatif (la valeur de $p$ doit être a minima plus petite que 0.05, ce qui représente un risque de 5 % de se tromper). Si le coefficient est non significatif, on considère alors qu'il est semblable à un coefficient = 0, c'est-à-dire qu'on ne peut pas considérer l'existence d'un lien.
 
 
-<div class="alert alert-info" role="alert">
+<div class="alert alert-success" role="alert">
 Si votre $p$ est entre 0.05 et 0.1, vous pouvez éventuellement parler d’un effet tendanciel, bien que non significative votre corrélation indique une tendance et il ne faut donc pas rejeter complètement cette corrélation. Là encore, il s'agit de pratiques qui diffèrent en fonction des disciplines.
 <hr>
-En SHS la limite à partir de laquelle nous considérons en général le test comme fiable est fixée à 5 %. Comme expliqué il s'agit du seuil de significativité. Ce seuil est le risque d'erreur que nous considérons comme acceptable. Toutefois dans certaines disciplines, notamment en santé, ce seuil est abaissé à 1 % voire 0.1 %.
-</div>
+En SHS la limite à partir de laquelle nous considérons en général le test comme fiable est fixée à 5 %. Comme expliqué il s'agit du seuil de significativité. Ce seuil est le risque d'erreur que nous considérons comme acceptable. Toutefois dans certaines disciplines, notamment en santé, ce seuil est abaissé à 1 % voire 0.1 %.</div>
 
-Le calcul d'une corrélation est un test d'hypothèse^[__Un test d’hypothèse__ (ou test statistique) est une démarche qui a pour but de fournir une règle de décision permettant, sur la base de résultats d’échantillon, de faire un choix entre deux hypothèses statistiques], il s'accompagne donc d'une hypothèse nulle^[__L'hypothèse nulle__ (aussi appellée H0) est la base des tests statistiques. Cette hypothèse postule l'égalité entre des paramètres statistiques, ce qui implique le plus souvent l'affirmation d'une absence d’effet de la ou des variables indépendantes faisant l’objet de la recherche]. Dans le cas du test de corrélation cette dernière peut être formulée de la sorte :
+Le calcul d'une corrélation est un test d'hypothèse^[__Un test d’hypothèse__ (ou test statistique) est une démarche qui a pour but de fournir une règle de décision permettant, sur la base de résultats d’échantillon, de faire un choix entre deux hypothèses statistiques.], il s'accompagne donc d'une hypothèse nulle^[__L'hypothèse nulle__ (aussi appellée H0) est la base des tests statistiques. Cette hypothèse postule l'égalité entre des paramètres statistiques, ce qui implique le plus souvent l'affirmation d'une absence d’effet de la ou des variables indépendantes faisant l’objet de la recherche.]. Dans le cas du test de corrélation cette dernière peut être formulée de la sorte :
 
 * **Nous supposons que les variables ne sont pas liées, qu'elles sont indépendantes.**
 
@@ -228,17 +225,17 @@ datatable(woman_speak)
 
 Le nombre de packages que nous utiliserons est plutôt limité: 
 
-* `correlation` un package de la suite `easystats` qui nous permettra de réaliser le calcul des coefficients de corrélation.
-* `see` un autre package de la suite `easystats` qui lui nous permettra de représenter graphiquement nos coefficients de corrélation.
-* `dplyr` qui nous permettra de manipuler nos données en utilisant la syntaxe tidyverse.
-* `ggplot2` pour les représentations graphiques.
+* `correlation` un package de la suite `easystats` qui nous permettra de réaliser le calcul des coefficients de corrélation
+* `see` un autre package de la suite `easystats` qui nous permettra de représenter graphiquement nos coefficients de corrélation
+* `dplyr` qui nous permettra de manipuler nos données en utilisant la syntaxe tidyverse
+* `ggplot2` pour les représentations graphiques
 
  `easystats` n'est pas encore disponible sur le [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html){target="_blank"}, mais il est mis à disposition sur Github. Pour installer ce package (qui inclut les packages `correlation` et `see`), nous utiliserons la fonction `install_github()` du package `remotes`. 
 
 
 ```{r eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
 
-install.packages('remotes')
+install.packages("remotes")
 remotes::install_github("easystats/easystats")
 
 ```
@@ -247,16 +244,15 @@ remotes::install_github("easystats/easystats")
 
 ### easystats
 
-La suite `easystats` (@easystats) est un eco-système qui propose un ensemble de pakages facilitant la réalisation de statistiques avancées dans R. Les personnes à l'origine de ce projet viennent de la neuro-psychologie et des statistiques. Cette suite inclut des packages comme `correlation` ou `see`, mais également des packages comme `report` qui permet la mise en forme des sorties R au format manuscrit, ou encore `bayestestR` qui permet de réaliser des statistiques bayésiennes. 
+La suite `easystats` (@easystats) est un eco-système qui propose un ensemble de pakages facilitant la réalisation de statistiques avancées dans R. Les personnes à l'origine de ce projet viennent de la neuropsychologie et des statistiques. Cette suite inclut des packages comme `correlation` ou `see`, mais également des packages comme `report` qui permet la mise en forme des sorties R au format manuscrit, ou encore `bayestestR` qui permet de réaliser des statistiques bayésiennes. 
 
 
-<div class="alert alert-info" role="alert">
-`easystats` présente plusieurs avantages importants: 
+<div class="alert alert-success" role="alert">
+`easystats` présente plusieurs avantages importants : 
 
-* Une documentation riche via <a href="https://github.com/easystats/easystats" target="_blank">github</a> et un <a href="https://easystats.github.io/blog/posts/" target="_blank">blog dédié</a>.
-* Un environnement de package permettant de réaliser de manière facilitée des analyses statistiques avancées.
-* Une utilisation compatible avec la (très à la mode) [syntaxe tidyverse](https://style.tidyverse.org/){target="_blank"}.
-</div>
+* une documentation riche via <a href="https://github.com/easystats/easystats" target="_blank">github</a> et un <a href="https://easystats.github.io/blog/posts/" target="_blank">blog dédié</a>
+* un environnement de packages permettant de réaliser de manière facilitée des analyses statistiques avancées
+* une utilisation compatible avec la (très à la mode) [syntaxe tidyverse](https://style.tidyverse.org/){target="_blank"}</div>
 
 <br>
 
@@ -264,7 +260,7 @@ La suite `easystats` (@easystats) est un eco-système qui propose un ensemble de
 
 ## Corrélation avec R base
 
-Commençons par charger le jeu de donnée téléchargé.
+Commençons par charger le jeu de données téléchargé.
 
 ```{r, echo=TRUE, eval=TRUE}
 woman_speak <- read.csv("data/woman_speak.csv", stringsAsFactors = TRUE)
@@ -276,30 +272,30 @@ En utilisant la fonction `str()`, on obtient un rapide panorama des différentes
 str(woman_speak)
 ```
 
-On note la présence à la fois de variables quantitatives et des variables qualitatives, stockées réspectivement en format numérique et en chaîne de caractères (factor)
+On note la présence à la fois de variables quantitatives et de variables qualitatives, stockées respectivement en format numérique et en chaîne de caractères (factor).
 
 Pour calculer des corrélations en R base, il est possible d'utiliser les fonctions `cor.test()` pour mesurer l'association de 2 variables et `cor()` pour réaliser une matrice de corrélation entre plusieurs variables. Ces deux fonctions sont assez simples d'utilisation, mais présentent un problème majeur : **elles fonctionnent uniquement avec des variables quantitatives stockées en format numérique**.
 
 Pour pallier ce problème, il est possible de :
 
-* recoder les variables qualitatives en format numérique.
-* se concentrer uniquement les variables quantitatives.
+* recoder les variables qualitatives en format numérique
+* se concentrer uniquement sur les variables quantitatives
 
 
-La fonction `cor.test()` qui permet de corréler des variables deux à deux renvoie un ensemble d'information : la $p-value$, le degré de liberté^[__Le dégré de liberté__ est un paramètre important qui intervient dans la réalisation des tests statistiques. Il dépend à la fois du nombre d'observation de votre échantillon (le nombre d'individus statistiques) et du nombre de paramères (de variables) de votre modèle. Le degré de liberté représente la quantité d'information fournies par vos données que le modèle statistique peut "utiliser" pour estimer les valeurs des paramètres d'une population qui serait inconnu et calculer la variabilités de ces estimations.], un intervalle de confiance et bien sûr le coefficient de corrélation (ici Pearson).
+La fonction `cor.test()` qui permet de corréler des variables deux à deux renvoie un ensemble d'information : la $p-value$, le degré de liberté^[__Le degré de liberté__ est un paramètre important qui intervient dans la réalisation des tests statistiques. Il dépend à la fois du nombre d'observations de votre échantillon (le nombre d'individus statistiques) et du nombre de paramètres (de variables) de votre modèle. Le degré de liberté représente la quantité d'information fournie par vos données que le modèle statistique peut "utiliser" pour estimer les valeurs des paramètres d'une population qui serait inconnue et calculer la variabilités de ces estimations.], un intervalle de confiance et bien sûr le coefficient de corrélation (ici Pearson).
 
 ```{r, echo=TRUE, eval=TRUE}
 cor.test(woman_speak$women_expression_rate, woman_speak$speech_rate, method = "pearson")
 
 ```
 
-L'argument `method` permet de préciser le coefficient de corrélation a utiliser (Pearson par défaut). Cette fonction, outre le fait de ne prendre en entrée que des variables numériques et de ne pas proposer de possibilités de correction des $p-values$ ^[__Les tests de corrections (ou d'ajustement) des p-value__ sont un ensemble de tests qui permettent d'ajuster les $p-values$ pour réduire le risque d'erreur. En effet en statistique lorsqu'il y a des comparaisons multiples on augmente la probabilité de faire erreur. Bref, plus on réalise de croisement plus on augmente les chances de se tromper. Les tests de correction des $p-values$ vont agir afin de recalibrer, rehausser les $p-values$ pour pouvoir continuer à les comparer dans tous les cas, à un risque de 5%. C’est cela qu’on appelle l’ajustement des $p-values$], n'est en soi pas mauvaise, mais peut se révéler fastidieuse si vous avez un grand nombre de variables à étudier.
+L'argument `method` permet de préciser le coefficient de corrélation a utiliser (Pearson par défaut). Cette fonction, outre le fait de ne prendre en entrée que des variables numériques et de ne pas proposer de possibilités de correction des $p-values$^[__Les tests de correction (ou d'ajustement) des *p-values*__ sont un ensemble de tests qui permettent d'ajuster les $p-values$ pour réduire le risque d'erreur. En effet en statistique lorsqu'il y a des comparaisons multiples on augmente la probabilité de faire une erreur. Bref, plus on réalise de croisements plus on augmente les chances de se tromper. Les tests de correction des $p-values$ vont agir afin de recalibrer, rehausser les $p-values$ pour pouvoir continuer à les comparer dans tous les cas, à un risque de 5 %. C’est ce qu’on appelle l’ajustement des $p-values$.], n'est en soi pas mauvaise, mais peut se révéler fastidieuse si vous avez un grand nombre de variables à étudier.
 
 Une manière facile d'étudier les corrélations entre un grand nombre de variables est de calculer une matrice de corrélation avec la fonction R base `cor()`.
 Pour l'utiliser, il est nécessaire de ne conserver que les variables numériques de notre tableau.
 ```{r, echo=TRUE, eval=TRUE}
 library(dplyr)
-# Séléction des variables quantitatives stockées en numérique
+# Sélection des variables quantitatives stockées en numérique
 woman_speak_num <- woman_speak %>% select(speech_rate, women_expression_rate, nb_hours_analyzed)
 
 cor(woman_speak_num)
@@ -307,25 +303,24 @@ cor(woman_speak_num)
 
 La fonction renvoie une matrice de corrélation entre l'ensemble des variables. Cependant, un problème majeur subsiste : nous ne sommes pas en mesure ici d'identifier les corrélations qui seraient significatives statistiquement.
 
-<div class="alert alert-info" role="alert">
+<div class="alert alert-success" role="alert">
 `cor.test` et `cor` ont pour point commun de ne proposer comme coefficient de corrélation que les trois plus fréquemment utilisés et connus : Pearson, Spearman et Kendall.
-Si dans la plupart des cas cela ne pose pas de problèmes, le jour où vous souhaiterez utiliser un autre coefficient vous ne pourrez pas utiliser ces fonctions.
-</div>
+Si dans la plupart des cas cela ne pose pas de problèmes, le jour où vous souhaiterez utiliser un autre coefficient vous ne pourrez pas utiliser ces fonctions.</div>
 
 <br>
 
 ## Corrélations avec...`correlation`
 
-Le package `correlation` propose des solutions alternatives efficaces pour réaliser des analyses de corrélations sur un grand nombre de variables, il offre les avantages suivant :
+Le package `correlation` propose des solutions alternatives efficaces pour réaliser des analyses de corrélations sur un grand nombre de variables ; il offre les avantages suivants :
 
-* Facilité d'utilisation.
-* Documentation riche et claire, sur <a href="https://github.com/easystats/correlation" target="_blank">github</a> et une <a href="https://easystats.github.io/correlation/index.html" target="_blank">vignette</a>.
-* Permet de corréler des variables qualitatives sans avoir à les recoder artificiellement en format numérique.
-* Permet de réaliser des corrélations stratifiées (corrélations à l'intérieur de sous-groupes).
-* Permet d'utiliser un test de comparaisons multiples et l'ajustement des $p-value$. *Il s'agit de tests dont les biostatisticiens sont très familiers. Ces tests permettent notamment un ajustement des $p-value$ lors de comparaisons multiples, ce qui permet d'éviter les faux positifs, c'est à dire éviter de croire qu'un coefficient soit positif alors qu'il ne l'est pas*.
-* Permet d'**analyser des corrélation entre des variables qualitatives et quantitatives**.
-* Permet le calul de nombreux coefficients de corrélation (en plus des classiques Pearson-Spearman-Kendall). La liste exhaustive, [ici](https://easystats.github.io/correlation/articles/types.html){target="_blank"}
-* Permet de réaliser des analyses dans un cadre bayésien, et de faire du multiniveaux.
+* facilité d'utilisation
+* documentation riche et claire, sur <a href="https://github.com/easystats/correlation" target="_blank">github</a> et une <a href="https://easystats.github.io/correlation/index.html" target="_blank">vignette</a>
+* permet de corréler des variables qualitatives sans avoir à les recoder artificiellement en format numérique
+* permet de réaliser des corrélations stratifiées (corrélations à l'intérieur de sous-groupes)
+* permet d'utiliser un test de comparaisons multiples et l'ajustement des $p-values$. *Il s'agit de tests dont les biostatisticiens sont très familiers. Ces tests permettent notamment un ajustement des $p-values$ lors de comparaisons multiples, ce qui permet d'éviter les faux positifs, c'est à dire éviter de croire qu'un coefficient soit positif alors qu'il ne l'est pas*
+* permet d'**analyser des corrélation entre des variables qualitatives et quantitatives**
+* permet le calul de nombreux coefficients de corrélation (en plus des classiques Pearson-Spearman-Kendall). La liste exhaustive [ici](https://easystats.github.io/correlation/articles/types.html){target="_blank"}
+* permet de réaliser des analyses dans un cadre bayésien, et de faire du multiniveaux
 
 
 
@@ -337,33 +332,32 @@ library(correlation)
 
 ```
 
-Nous utiliserons ensuite la fonction `correlation()` pour calculer les coefficients. De nombreux arguments sont disponibles pour paramètrer cette fonction. Les trois arguments que vous seriez le plus amené à modifier sont :
+Nous utiliserons ensuite la fonction `correlation()` pour calculer les coefficients. De nombreux arguments sont disponibles pour paramétrer cette fonction. Les trois arguments que vous serez le plus amené à modifier sont :
 
- * `method` : permet de choisir le coefficient de corrélation à mettre en œuvre (Pearson par défaut). Une diziane de choix sont possibles, ainsi qu'une option *"auto"* qui permet de sélectionner automatiquement la méthode la plus adaptée en fonction de vos données, très utile afin de croiser variables qualitatives et quantitatives.
- * `p_adjust` : permet de choisir le test de corrections à mettre en œuvre (*"Holm"* par défaut). Cela ne fonctionne que lorsque le test de corrélation choisit est fréquentiste, c'est à dire non-bayésien.
- * `include_factors` : permet de spécifier si nos données contiennent des variables qui seraient des facteurs (*FALSE* par défaut).
+ * `method` : permet de choisir le coefficient de corrélation à mettre en œuvre (Pearson par défaut). Une dizaine de choix sont possibles, ainsi qu'une option *"auto"* qui permet de sélectionner automatiquement la méthode la plus adaptée en fonction de vos données, très utile afin de croiser variables qualitatives et quantitatives
+ * `p_adjust` : permet de choisir le test de corrections à mettre en œuvre (*"Holm"* par défaut). Cela ne fonctionne que lorsque le test de corrélation choisit est fréquentiste, c'est à dire non-bayésien
+ * `include_factors` : permet de spécifier si nos données contiennent des variables qui seraient des facteurs (*FALSE* par défaut)
  
 
-Exemple, avec tous les arguments par défaut:
+Exemple, avec tous les arguments par défaut :
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=TRUE, cache =TRUE}
 ws_cor <- correlation(woman_speak)
 ```
 
-Le résultat renvoyé par cette fonction est un *data.frame*. Il est donc intérréssant d'assigner le résultat dans un objet, ici *ws_cor*.
+Le résultat renvoyé par cette fonction est un *data.frame*. Il est donc intéressant d'assigner le résultat dans un objet, ici *ws_cor*.
 
 Chaque ligne du tableau correspond à une corrélation entre deux variables. Plusieurs valeurs sont fournies à chaque fois : la $p-value$, un intervalle de confiance, la méthode utilisée...
 
-<div class="alert alert-info" role="alert">
-Il faut noter qu'en conservant la valeur par défaut (`FALSE`) de l'argument `include.factor`, l'ensemble de nos variables qualitatives stockée en *factor* ont été "éjectées" de l'analyse sans qu'aucun message d'erreur ne soit renvoyé. 
-</div>
+<div class="alert alert-success" role="alert">
+Il faut noter qu'en conservant la valeur par défaut (`FALSE`) de l'argument `include.factor`, l'ensemble de nos variables qualitatives stockée en *factor* ont été "éjectées" de l'analyse sans qu'aucun message d'erreur ne soit renvoyé.</div>
 
 ```{r, echo=FALSE, eval=TRUE}
 datatable(ws_cor)
 ```
 
 
-Généralement, on visualise les résultats de corrélations sous forme de matrice (et non tableau). Pour cela, nous pouvons utiliser la fonction `summary()`.
+Généralement, on visualise les résultats de corrélations sous forme de matrice (et non de tableau). Pour cela, nous pouvons utiliser la fonction `summary()`.
 
 ```{r, echo=TRUE, eval=TRUE}
 summary(ws_cor)
@@ -373,8 +367,7 @@ summary(ws_cor)
 Les * permettent d'appréhender rapidement la significativité des coefficients de corrélation :    
 - * $p-value$ < 0.05    
 - ** $p-value$ < 0.01    
-- *** $p-value$ < 0.001    
-</div>
+- *** $p-value$ < 0.001 </div>
 
 
 Pour obtenir la matrice dans son intégralité, il suffit d'ajouter l'argument `redundant=TRUE` à la fonction `summary()`
@@ -390,14 +383,13 @@ summary(ws_cor, redundant = TRUE)
 
 Un des avantages du package est la possibilité d'intégrer des variables qualitatives.
 </br>
-Pour ce faire, on utilise les arguments `include_factors=TRUE` ainsi que `method="auto"`
+Pour ce faire, on utilise les arguments `include_factors=TRUE` ainsi que `method="auto"`.
 
 
 <div class="alert alert-danger" role="alert">
-L'argument `method="auto"` est très important, sans lui la fonction appliquera toujours le même coefficient à savoir Pearson par défaut ou celui que vous aurez choisi. Vous obtiendrez alors des corrélations fausses. Grâce à l'argument `"auto"` la fonction choisira la méthode la plus adaptée en fonction des caractèristiques des différentes séries statistiques.
+L'argument `method="auto"` est très important ; sans lui la fonction appliquera toujours le même coefficient à savoir Pearson par défaut ou celui que vous aurez choisi. Vous obtiendrez alors des corrélations fausses. Grâce à l'argument `"auto"`, la fonction choisira la méthode la plus adaptée en fonction des caractéristiques des différentes séries statistiques.
 <hr>
-C'est l'un des principaux avantages de cette librairie, qui permet le calcul d'un coefficient de corrélation adapté au croisement de variables quantitatives et qualitatives. 
-</div>
+C'est l'un des principaux avantages de cette librairie, qui permet le calcul d'un coefficient de corrélation adapté au croisement de variables quantitatives et qualitatives.</div>
 
 
 ```{r, echo=TRUE, eval=TRUE}
@@ -405,23 +397,22 @@ ws_cor02 <- correlation(woman_speak, method = "auto", include_factors = TRUE)
 
 ```
 
-Voici les résultats obtenus, à l'aide de la colonne *method* vous pourrez voir le ou les coefficients utilisés :
+Voici les résultats obtenus ; à l'aide de la colonne *method* vous pourrez voir le ou les coefficients utilisés :
 ```{r, echo=FALSE, eval=TRUE}
 datatable(ws_cor02)
 ```
 
-Vous noterez que différentes méthodes ont été utilisées, notamment Pearson, Point-Biserial... ces méthodes ont donc été automatiquement sélectionnées en fonction des variables à étudier. On peut souligner également l'usage des coefficients de corrélation Polychorique et Tétrachorique (polychoric et tetrachoric en anglais) dans notre exemple.
+Vous noterez que différentes méthodes ont été utilisées, notamment Pearson, Point-Biserial... Ces méthodes ont donc été automatiquement sélectionnées en fonction des variables à étudier. On peut souligner également l'usage des coefficients de corrélation Polychorique et Tétrachorique (polychoric et tetrachoric en anglais) dans notre exemple.
 
-<div class="alert alert-info" role="alert">
-Historiquement ces deux méthodes étaient utilisées pur donner une estimation "rapide" du coefficient de Pearson du temps des calculs à la main.
-Dans les deux cas on fait l'hypothèse d'une distribution sous-jacente qui est normale.
+<div class="alert alert-success" role="alert">
+Historiquement ces deux méthodes étaient utilisées pour donner une estimation "rapide" du coefficient de Pearson du temps des calculs à la main.
+Dans les deux cas, on fait l'hypothèse d'une distribution sous-jacente qui est normale.
 <hr>
-Polychorique : s'utilise pour étudier le lien entre deux variables qualitatives de type ordinale.
+Polychorique : s'utilise pour étudier le lien entre deux variables qualitatives de type ordinale
 <hr>
-Tétrachorique : Il s'agit d'un cas particulier d'une corrélation polychorique, où les deux variables à étudier seraient nominales c'est à dire dichotomiques.
+Tétrachorique : il s'agit d'un cas particulier d'une corrélation polychorique, où les deux variables à étudier seraient nominales, c'est à dire dichotomiques
 <hr>
-Dans le cas où vous noteriez l'usage d'une corrélation non mentionnée dans cette fiche, je vous conseille de consulter [l'article](https://easystats.github.io/correlation/articles/types.html){target="_blank"} listant l'ensemble des corrélations proposées par le package. Vous y verrez pourquoi tel ou tel coefficient a été choisi.
-</div>
+Dans le cas où vous noteriez l'usage d'une corrélation non mentionnée dans cette fiche, je vous conseille de consulter [l'article](https://easystats.github.io/correlation/articles/types.html){target="_blank"} listant l'ensemble des corrélations proposées par le package. Vous y verrez pourquoi tel ou tel coefficient a été choisi.</div>
 
 
 La mise en forme sous matrice fonctionne exactement de la même manière que pour des données entièrement numériques.
@@ -433,7 +424,7 @@ summary(ws_cor02)
 
 ### Corrélations par sous-groupes
 
-C'est une méthode intéressante qui permet de réaliser des corrélations sur des sous-groupes de notre jeux de données. **Cela permet de détécter des corrélations existantes à l'échelle d'un sous-groupe** mais pas pour l'ensemble de la série statistique.
+C'est une méthode intéressante qui permet de réaliser des corrélations sur des sous-groupes de notre jeu de données. **Cela permet de détecter des corrélations existantes à l'échelle d'un sous-groupe** mais pas pour l'ensemble de la série statistique.
 
 
 En utilisant la syntaxe tidyverse, il est simple d'évaluer les liens entre nos différentes variables **par exemple selon le type de média** (les différents types de média constitueront nos sous-groupes).
@@ -458,13 +449,13 @@ ws_cortvradio <- woman_speak %>%
 ```
 
 
-Le fait d'imbriquer la séléction d'un sous-effectif puis le calcul des corrélations en utilisant la syntaxe tidyverse a pour conséquence la création d'une nouvelle variable : `Group`
+Le fait d'imbriquer la sélection d'un sous-effectif puis le calcul des corrélations en utilisant la syntaxe tidyverse a pour conséquence la création d'une nouvelle variable : `Group`.
 
 ```{r, echo=TRUE, eval=TRUE}
 datatable(ws_cortvradio) 
 ```
 
-En utilisant la fonction `summary()`, nous pourront visualiser les résultats et observer un lien significatif entre l'année et le taux d'expression des femmes à la radio, mais pas à la télévision.
+En utilisant la fonction `summary()`, nous pourrons visualiser les résultats et observer un lien significatif entre l'année et le taux d'expression des femmes à la radio, mais pas à la télévision.
 
 ```{r, echo=TRUE, eval=TRUE}
 summary(ws_cortvradio)
@@ -476,7 +467,7 @@ summary(ws_cortvradio)
 
 ### Nuage de points
 
-Dans l'étude des corrélations, les représentations graphiques s'avérent indispensables pour valider l'interprétation du coefficient de corrélation et enrichir son analyse.
+Dans l'étude des corrélations, les représentations graphiques s'avèrent indispensables pour valider l'interprétation du coefficient de corrélation et enrichir son analyse.
 La représentation classique d'une corrélation est le nuage de points.
 
 
@@ -531,8 +522,7 @@ plot(ws_cor)
 En plus d'être originale, cette représentation sous forme de graphe est intéressante mais suppose le chargement de la librairie `ggraph`. 
 
 <div class="alert alert-danger" role="alert">
-Cette fonctionnalité comporte tout de même quelques défaults. La personnalisation du graphe est limitée et celui-ci peu rapidement devenir illisible si le nombre de variables est important.
-</div>
+Cette fonctionnalité comporte tout de même quelques défaults. La personnalisation du graphe est limitée et celui-ci peu rapidement devenir illisible si le nombre de variables est important.</div>
 
 <br>
 
@@ -553,16 +543,15 @@ plot(mat_cor, show_values = TRUE, show_p = TRUE, show_legend = TRUE)
 ```
 
 <div class="alert alert-danger" role="alert">
-Le package `see` permet donc de visualiser rapidement les résultats renvoyés par la fonction `correlation()` du package `correlation`. Cependant, il faut reconnaître que la personnalisation des figures reste limitée...
-</div>
+Le package `see` permet donc de visualiser rapidement les résultats renvoyés par la fonction `correlation()` du package `correlation`. Cependant, il faut reconnaître que la personnalisation des figures reste limitée...</div>
 
 <br>
 
-### Corrélogramme avec corrplot
+### Corrélogramme avec `corrplot`
 
-Pour construire des corrélogrammes très personnalisés, il existe le package `corrplot` qui est très efficace. Pour que la matrice de corrélation soit compatible avec ce package, il vous sera nécessaire de la modifier légèrement...
+Pour construire des corrélogrammes très personnalisés, il existe le package `corrplot` qui est très efficace. Pour que la matrice de corrélation soit compatible avec ce package, il vous sera nécessaire de la modifier légèrement.
 
-**Étape 1** : Calcul de la matrice de corrélation, stockée dans un objet.
+**Étape 1** : Calcul de la matrice de corrélation, stockée dans un objet
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -572,7 +561,7 @@ mat_cor_comp <- summary(ws_cor, redundant = TRUE)
 
 <br>
 
-**Étape 2** : Transformons cet objet en une matrice de corrélation **utilisable avec la librairie corrplot**.
+**Étape 2** : Transformation de cet objet en une matrice de corrélation **utilisable avec la librairie `corrplot`**
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -586,16 +575,16 @@ mat_cor<- as.matrix(mat_cor_comp[,-1])
 
 <br>
 
-**Étape 3** : Construction d'une seconde matrice (structure similaire) comportant les $p-values$.
+**Étape 3** : Construction d'une seconde matrice (structure similaire) comportant les $p-values$
 
-Pour cela, on utilisera la fonction `cor_to_p()` du package `correlation`, qui renvoie une liste de deux matrices : celle des $p-values$ et celle des intervalles de confiances
+Pour cela, on utilisera la fonction `cor_to_p()` du package `correlation`, qui renvoie une liste de deux matrices : celle des $p-values$ et celle des intervalles de confiance.
 
 ```{r, echo=TRUE, eval=TRUE}
 
 # Calcul du nombre total d'individus
 nb <- nrow(woman_speak)
 
-# Calcul des matrice de p-values et des intervalles de confiance
+# Calcul des matrices de p-values et des intervalles de confiance
 p.value <- cor_to_p(mat_cor, n = nb, method = "auto")
 
 # Extraction de la matrice des p-value uniquement
@@ -617,7 +606,7 @@ corrplot(mat_cor, p.mat = p_mat)
 
 **Étape 5** : Personnalisation du corrélogramme
 
-Pour connaître l'ensemble des arguments disponibles, vous pouvez consultez la <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html" target="_blank">documentation du package corrplot</a>. Vous pouvez également utiliser la library `RColorBrewer` pour créer votre palette de couleur personalisée.
+Pour connaître l'ensemble des arguments disponibles, vous pouvez consultez la <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html" target="_blank">documentation du package `corrplot`</a>. Vous pouvez également utiliser la library `RColorBrewer` pour créer votre palette de couleurs personnalisée.
 
 ```{r, echo=TRUE, eval=TRUE}
 library(RColorBrewer)
@@ -632,7 +621,7 @@ corrplot(mat_cor,
          col=brewer.pal(n = 8, name = "PRGn"), 
          sig.level = 0.000001, 
          insig = "blank", 
-         diag=FALSE, )
+         diag = FALSE, )
   
 ```
 
@@ -660,13 +649,13 @@ library(corrr)
 # Matrice de corrélation -> data.frame de corrélation
 hist_cor <- as_cordf(mat_cor)
 
-# Séléction des corrélations de la variable "year"
+# Sélection des corrélations de la variable "year"
 hist_cor <- focus(hist_cor, year)
 
 
 ```
 
-On obtiens le tableau suivant :
+On obtient le tableau suivant :
 
 ```{r, echo=FALSE, eval=TRUE}
 datatable(hist_cor)
@@ -676,7 +665,7 @@ Pour faciliter la lecture et identifier les corrélations positives et négative
 
 ```{r, echo=TRUE, eval=TRUE}
 
-# si la valeur est positive  = TRUE, sinon FALSE
+# Si la valeur est positive  = TRUE, sinon FALSE
 hist_cor$correlation <- hist_cor$year > 0
 
 ```
@@ -685,14 +674,14 @@ hist_cor$correlation <- hist_cor$year > 0
 datatable(hist_cor)
 ```
 
-Construction de l'histogramme avec le package `ggplot2`.
+Construction de l'histogramme avec le package `ggplot2`:
 
 
 ```{r, echo=TRUE, eval=TRUE}
 
 ggplot(hist_cor, aes(x = reorder(term, year), y = year, fill = correlation)) +
       geom_bar(stat = "identity", colour = "black") +
-      ylab("corrélation") +
+      ylab("Corrélation") +
       xlab("Variables") +
       scale_fill_discrete(labels = c("Négative", "Positive"))
   
@@ -701,10 +690,10 @@ ggplot(hist_cor, aes(x = reorder(term, year), y = year, fill = correlation)) +
 
 # Conclusion
 
-Comme indiqué en préambule, il ne s'agissait donc pas de faire un cours de statistique sur le calcul de corrélation en SHS mais plus de présenter une méthodologie à la fois juste sur la plan statistique et simple à réaliser sur R.
+Comme indiqué en préambule, il ne s'agissait donc pas de faire un cours de statistique sur le calcul de corrélation en SHS mais plutôt de présenter une méthodologie à la fois juste sur la plan statistique et simple à réaliser sur R.
 
-Si toutefois cette fiche ne vos aurait pas convaincus de passer à l'utilisation de R, sachez qu'il existe divers outils en ligne pour réaliser des corrélations.
-Vous pouvez par exemple utiliser <a href="https://analytics.huma-num.fr/Gregoire.LeCampion/Mon_nom_est_Pearson/" target="_blank">__Mon nom est Pearson__</a>, une application que j'ai développé, qui vous permettra de réaliser une analyse de corrélation en clic-bouton, en produisant à la fois des matrices de corrélation ainsi que diverses représentations. Cette application est réalisée à l'aide de R shiny et repose donc entiérement sur R tant pour la création de l'application que pour la réalisation des analyses et représentations.
+Si toutefois cette fiche ne vous aurait pas convaincu de passer à l'utilisation de R, sachez qu'il existe divers outils en ligne pour réaliser des corrélations.
+Vous pouvez par exemple utiliser <a href="https://analytics.huma-num.fr/Gregoire.LeCampion/Mon_nom_est_Pearson/" target="_blank">_Mon nom est Pearson_</a>, une application que j'ai développée, qui vous permettra de réaliser une analyse de corrélation en clic-bouton, en produisant à la fois des matrices de corrélation et diverses représentations. Cette application est réalisée à l'aide de `shiny` et repose donc entièrement sur R tant pour la création de l'application que pour la réalisation des analyses et représentations.
 
 
 # Bibliographie {-}
