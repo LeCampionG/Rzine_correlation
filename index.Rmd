@@ -193,9 +193,8 @@ Les données que nous utiliserons sont mises à disposition sur <a href="https:/
 Ces données ont été produites par l'INA dans le cadre d'une journée d'étude sur la parole en juin 2018. La compilation des temps de parole a été réalisée à l'aide du logiciel libre *inaSpeechSegmenter*, développé à l'institut national de l'audiovisuel (INA). Ce logiciel est basé sur des algorithmes d'apprentissage automatique.
 Nous utiliserons le fichier de données relatif au temps de parole des femmes à la télévision et à la radio. **Ces données présentent l'intérêt de se composer à la fois de variables qualitatives ordinales et dichotomiques ainsi que de variables quantitatives continues**.
 
-<br>
-
-<p class="center"> [<img src="figures/zip.png" width="50"/> **Télécharger les données**](https://github.com/rzine-reviews/Rzine_correlation/raw/master/data.zip) </p>
+<br>   
+<p class="center">[<span style="font-size: 230%;" class="glyphicon glyphicon-download-alt"></span> <br/> Télécharger les données](https://github.com/rzine-reviews/Rzine_correlation/raw/master/data.zip)</p>
 
 <br>
 
@@ -679,7 +678,7 @@ Construction de l'histogramme avec le package `ggplot2`:
 
 ```{r, echo=TRUE, eval=TRUE}
 
-ggplot(hist_cor, aes(x = reorder(term, year), y = year, fill = correlation)) +
+ggplot(hist_cor, aes(x = reorder(rowname, year), y = year, fill = correlation)) +
       geom_bar(stat = "identity", colour = "black") +
       ylab("Corrélation") +
       xlab("Variables") +
