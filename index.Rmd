@@ -243,7 +243,7 @@ remotes::install_github("easystats/easystats")
 
 ### easystats
 
-La suite `easystats` (@easystats) est un eco-système qui propose un ensemble de pakages facilitant la réalisation de statistiques avancées dans R. Les personnes à l'origine de ce projet viennent de la neuropsychologie et des statistiques. Cette suite inclut des packages comme `correlation` ou `see`, mais également des packages comme `report` qui permet la mise en forme des sorties R au format manuscrit, ou encore `bayestestR` qui permet de réaliser des statistiques bayésiennes. 
+La suite `easystats` [@easystats] est un eco-système qui propose un ensemble de pakages facilitant la réalisation de statistiques avancées dans R. Les personnes à l'origine de ce projet viennent de la neuropsychologie et des statistiques. Cette suite inclut des packages comme `correlation` ou `see`, mais également des packages comme `report` qui permet la mise en forme des sorties R au format manuscrit, ou encore `bayestestR` qui permet de réaliser des statistiques bayésiennes. 
 
 
 <div class="alert alert-success" role="alert">
