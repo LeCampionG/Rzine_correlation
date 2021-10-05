@@ -37,7 +37,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 ```
 
-<figcaption style="font-size:13px;">, <URL :https://imgs.xkcd.com/comics/correlation.png</figcaption>
+<figcaption style="font-size:13px;">xkcd.com, 2020, Disponible en ligne : [https://xkcd.com/552/](https://xkcd.com/552/)</figcaption>
 
 
 # Préambule {-}
@@ -69,7 +69,7 @@ On peut théoriquement mesurer une corrélation entre n'importe quelle variable.
 <figure class="center">
   [<img src="figures/spurious-correlations-1.jpg" width="800">](http://tylervigen.com/spurious-correlations){target="_blank"}
   
-  <figcaption style="font-size:13px;">tylervigen.com, 2020, <URL : http://tylervigen.com/spurious-correlations> </figcaption>
+  <figcaption style="font-size:13px;">tylervigen.com, 2020, Disponible en ligne : [http://tylervigen.com/spurious-correlations](http://tylervigen.com/spurious-correlations)</figcaption>
 </figure>
 
 <br>
@@ -97,8 +97,8 @@ Voici un tableau recensant différents types de coefficients de corrélation par
 
 
 <figure class="center">
-  [<img src="figures/types_of_correlations.jpg" width="650"/>](https://statswithcats.files.wordpress.com/2010/11/types-of-correlations.jpg?w=640&h=660%3E){target="_blank"}
-  <figcaption style="font-size:13px;">Stats With Cats Blog, 2020, A Typolofy of Data Relationships, <URL : https://statswithcats.files.wordpress.com/2010/11/types-of-correlations.jpg?w=640&h=660></figcaption>
+  [<img src="figures/types_of_correlations.jpg" width="650"/>](https://statswithcats.net/2010/11/28/secrets-of-good-correlations/){target="_blank"}
+  <figcaption style="font-size:13px;">Stats With Cats Blog, 2010, Secrets of Good Correlations, Disponible en ligne : [https://statswithcats.net/2010/11/28/secrets-of-good-correlations/](https://statswithcats.net/2010/11/28/secrets-of-good-correlations/)</figcaption>
 </figure>
 
 <br>
@@ -160,9 +160,11 @@ Si nous reprenons l'exemple cité précédemment en partie 1.1 sur le lien entre
 * __Le sens de la relation__ : la corrélation est-elle positive ou négative (coefficient supérieur ou inférieur à 0) ?
 * __La force de la relation__ : plus la valeur du coefficient est proche de + 1 ou de - 1, plus les deux variables sont associées fortement. Au contraire, plus le coefficient est près de 0, moins les variables partagent de covariance et, donc, moins l'association est forte.
 
-Voici une figure récapitulative : 
+<br/>
 
 <p class="center"><img src="figures/lecture_correlation.png" width="500"/> </p>
+
+<br/>
 
 Dans certaines disciplines des SHS on utilise les bornes de Cohen pour juger de la force d'une corrélation (Cohen, 1988) :
 
