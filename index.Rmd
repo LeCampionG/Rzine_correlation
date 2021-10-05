@@ -37,6 +37,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 ```
 
+<figcaption style="font-size:13px;">, <URL :https://imgs.xkcd.com/comics/correlation.png</figcaption>
 
 
 # Préambule {-}
@@ -65,7 +66,13 @@ On peut théoriquement mesurer une corrélation entre n'importe quelle variable.
 
 <br>
 
-<p class="center">[<img src="figures/spurious-correlations-1.jpg" width="650"/>](http://tylervigen.com/spurious-correlations){target="_blank"} </p>
+<figure class="center">
+  [<img src="figures/spurious-correlations-1.jpg" width="800">](http://tylervigen.com/spurious-correlations){target="_blank"}
+  
+  <figcaption style="font-size:13px;">tylervigen.com, 2020, <URL : http://tylervigen.com/spurious-correlations> </figcaption>
+</figure>
+
+<br>
 
 On remarque une trajectoire commune. **Il existe statistiquement une relation forte entre ces deux variables mais cela n'implique en aucun cas que l’une est la cause de l’autre**.
 
@@ -88,7 +95,13 @@ Pour faire le bon choix, vous devez prendre en compte :
 
 Voici un tableau recensant différents types de coefficients de corrélation parmi les plus courants.
 
-<p class="center"><img src="figures/types_of_correlations.jpg" width="650"/> </p>
+
+<figure class="center">
+  [<img src="figures/types_of_correlations.jpg" width="650"/>](https://statswithcats.files.wordpress.com/2010/11/types-of-correlations.jpg?w=640&h=660%3E){target="_blank"}
+  <figcaption style="font-size:13px;">Stats With Cats Blog, 2020, A Typolofy of Data Relationships, <URL : https://statswithcats.files.wordpress.com/2010/11/types-of-correlations.jpg?w=640&h=660></figcaption>
+</figure>
+
+<br>
 
 Nous ne ferons pas ici un point statistique sur chacun de ces coefficients et n'aborderons pas les soubassements algébriques de ces tests. Toutefois, il est bon de savoir et de se rappeller qu'il existe différents types de coefficients de corrélation et qu'il faudra choisir celui à utiliser en fonction des variables à analyser.
 
@@ -149,7 +162,7 @@ Si nous reprenons l'exemple cité précédemment en partie 1.1 sur le lien entre
 
 Voici une figure récapitulative : 
 
-<p class="center"><img src="figures/lecture_correlation.png" width="650"/> </p>
+<p class="center"><img src="figures/lecture_correlation.png" width="500"/> </p>
 
 Dans certaines disciplines des SHS on utilise les bornes de Cohen pour juger de la force d'une corrélation (Cohen, 1988) :
 
