@@ -18,7 +18,7 @@ nocite: |
 link-citations: true
 github: "rzine-reviews/Rzine_correlation"
 # gitlab: "gitlab.huma-num.fr/author/repository"
-# doi: "10.5281/zenodo.4554776"
+doi: "10.48645/qhav-cb52"
 licence: "by-sa"
 # 5 possible choices : "by-nd", "by", "by-nc-sa", "by-nc","by-sa"
 ---
@@ -37,7 +37,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 ```
 
-<figcaption style="font-size:13px;">xkcd.com, 2020, Disponible en ligne (CC BY-NC 2.5): [https://xkcd.com/552/](https://xkcd.com/552/)</figcaption>
+<figcaption style="font-size:13px;">xkcd.com, 2020, licence [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/deed.fr){target="_blank"}, Disponible en ligne : [https://xkcd.com/552/](https://xkcd.com/552/){target="_blank"}</figcaption>
 
 
 # Préambule {-}
@@ -69,7 +69,7 @@ On peut théoriquement mesurer une corrélation entre n'importe quelle variable.
 <figure class="center">
   [<img src="figures/spurious-correlations-1.jpg" width="800">](http://tylervigen.com/spurious-correlations){target="_blank"}
   
-  <figcaption style="font-size:13px;">tylervigen.com, 2020, Disponible en ligne : [http://tylervigen.com/spurious-correlations](http://tylervigen.com/spurious-correlations)</figcaption>
+  <figcaption style="font-size:13px;">tylervigen.com, 2020, Disponible en ligne : [http://tylervigen.com/spurious-correlations](http://tylervigen.com/spurious-correlations){target="_blank"}</figcaption>
 </figure>
 
 <br>
@@ -98,7 +98,7 @@ Voici un tableau recensant différents types de coefficients de corrélation par
 
 <figure class="center">
   [<img src="figures/types_of_correlations.jpg" width="650"/>](https://statswithcats.net/2010/11/28/secrets-of-good-correlations/){target="_blank"}
-  <figcaption style="font-size:13px;">Stats With Cats Blog, 2010, Secrets of Good Correlations, Disponible en ligne : [https://statswithcats.net/2010/11/28/secrets-of-good-correlations/](https://statswithcats.net/2010/11/28/secrets-of-good-correlations/)</figcaption>
+  <figcaption style="font-size:13px;">Stats With Cats Blog, 2010, Secrets of Good Correlations, Disponible en ligne : [https://statswithcats.net/2010/11/28/secrets-of-good-correlations/](https://statswithcats.net/2010/11/28/secrets-of-good-correlations/){target="_blank"}</figcaption>
 </figure>
 
 <br>
@@ -693,7 +693,7 @@ Construction de l'histogramme avec le package `ggplot2`:
 
 ```{r, echo=TRUE, eval=TRUE}
 
-ggplot(hist_cor, aes(x = reorder(rowname, year), y = year, fill = correlation)) +
+ggplot(hist_cor, aes(x = reorder(term, year), y = year, fill = correlation)) +
       geom_bar(stat = "identity", colour = "black") +
       ylab("Corrélation") +
       xlab("Variables") +
