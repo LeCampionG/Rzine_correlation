@@ -729,13 +729,17 @@ kableExtra::kable_styling(knitr::kable(rzine::sessionRzine()[[2]], row.names = F
 ```{r Citation, echo=FALSE}
 
 rref <- bibentry(
-   bibtype = "article",
+   bibtype = "misc",
    title = "Analyse des corrélations avec easystats",
-   author = person("Grégoire Le Campion"),
-   journal = "Rzine",
-   publisher = "FR 2007 CIST",
+   subtitle = "Guide pratique avec R",
+   author = c("Grégoire Le Campion"),
+   doi = "10.48645/QHAV-CB52",
+   url = "https://rzine.fr/publication_rzine/20201127_glecampion_initiation_aux_correlations/",
+   keywords ="FOS: Other social sciences",
+   language = "fr",
+   publisher = "FR2007 CIST",
    year = 2021,
-   url = "https://rzine.fr/docs/20200526_glecampion_initiation_aux_correlations/index.html")
+   copyright = "Creative Commons Attribution Share Alike 4.0 International")
 
 ``` 
 
