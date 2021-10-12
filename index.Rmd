@@ -40,14 +40,13 @@ knitr::opts_chunk$set(echo=TRUE,
 <figcaption style="font-size:13px;">xkcd.com, 2020, licence [CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/deed.fr){target="_blank"}, Disponible en ligne : [https://xkcd.com/552/](https://xkcd.com/552/){target="_blank"}</figcaption>
 
 
+> Cette fiche vise à présenter une méthode efficace et simple pour réaliser, analyser et représenter des corrélations avec R, de la mise en forme des données à la réalisation de graphiques. Elle ne contient que de brefs rappels sur la notion de corrélation en statistique.
+
 # Préambule {-}
 
 Cette fiche ne constitue pas un cours sur les coefficients de corrélation. Si un rappel théorique est réalisé, il reste superficiel.  Néanmoins, certains concepts statistiques sont nécessaires pour aborder le sujet. Ces concepts seront identifiés par un numéro en indice qui renverra à un glossaire en fin de fiche.
 <br>
 Par ailleurs, il ne s'agit pas non plus de présenter une méthode qui serait __LA__ méthode pour réaliser des analyses de corrélation avec R.
-</br>
-L'objectif de cette fiche est de présenter étape par étape une méthodologie personnelle efficace et reproductible pour l'analyse des corrélations. 
-
 <br>
 
 # Qu'est ce qu'une corrélation ?
