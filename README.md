@@ -2,7 +2,10 @@
 ### Guide pratique avec R
 **Grégoire Le Campion (UMR 5319 passages)**
 <br/>  
-Pour consulter cette fiche Rzine vous pouvez cliquer [**ici**](https://rzine-reviews.github.io/Rzine_correlation/)
+
+Cette fiche vise à présenter une méthode efficace et simple pour réaliser, analyser et représenter des corrélations avec R, de la mise en forme des données à la réalisation de graphiques. Elle ne contient que de brefs rappels sur la notion de corrélation en statistique.
+
+Pour la consulter, cliquez [**ici**](https://rzine-reviews.github.io/Rzine_correlation/)
 
 
 <br/>  
