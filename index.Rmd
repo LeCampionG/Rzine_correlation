@@ -208,7 +208,7 @@ Ces données ont été produites par l'INA dans le cadre d'une journée d'étude
 Nous utiliserons le fichier de données relatif au temps de parole des femmes à la télévision et à la radio. **Ces données présentent l'intérêt de se composer à la fois de variables qualitatives ordinales et dichotomiques ainsi que de variables quantitatives continues**.
 
 <br>   
-<p class="center">[<span style="font-size: 230%;" class="glyphicon glyphicon-download-alt"></span> <br/> Télécharger les données](https://github.com/rzine-reviews/Rzine_correlation/raw/master/data.zip)</p>
+<p class="center">[<span style="font-size: 230%;" class="glyphicon glyphicon-download-alt"></span> <br/> Télécharger les données](https://rzine.fr/docs/20200526_glecampion_initiation_aux_correlations/data.zip)</p>
 
 <br>
 
